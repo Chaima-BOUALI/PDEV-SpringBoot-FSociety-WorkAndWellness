@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -52,6 +54,7 @@ public class PasswordResetToken implements Serializable{
 	    private Instant expiryDate;
 
 	    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	    @JsonIgnore
 	    @JoinColumn(nullable = false, name = "USER_ID")
 	    private User user;
 }
