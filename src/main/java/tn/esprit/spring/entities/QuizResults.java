@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,5 +59,6 @@ public class QuizResults implements Serializable {/**
 	@Lob
 	private byte[] dataImage;
 	@ManyToMany
+	@JsonIgnore
     Set<User> users;
 }

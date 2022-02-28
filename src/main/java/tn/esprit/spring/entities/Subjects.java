@@ -2,7 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,14 +11,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -67,8 +69,10 @@ public class Subjects implements Serializable{
 	@Lob
 	private byte[] dataImage;
 	@ManyToOne
+	@JsonIgnore
 	private Forum forum;
 	@ManyToOne
+	@JsonIgnore
 	private Partnership partnerships;
 }
 

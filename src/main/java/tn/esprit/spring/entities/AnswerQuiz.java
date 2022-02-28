@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -62,6 +64,7 @@ public class AnswerQuiz implements Serializable{/**
 	private byte[] dataImage;
 
     @OneToOne(mappedBy = "answers")
+    @JsonIgnore
     private QuestionsQuiz questions ;
 
 }

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -41,6 +43,8 @@ public class QuestionsQuiz implements Serializable{
 	@Column(length = 3000)
 	private String QuestionContent;
 	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
+	
     private AnswerQuiz answers;
 	
 

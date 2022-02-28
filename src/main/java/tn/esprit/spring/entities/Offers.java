@@ -11,8 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+
+
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -21,6 +21,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -71,7 +73,9 @@ public class Offers implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateOffer; 
 	@ManyToOne
+	@JsonIgnore
 	private Partnership partnerships;
 	@ManyToMany
+	@JsonIgnore
     Set<User> users;
 }

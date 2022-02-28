@@ -2,7 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +26,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -95,6 +96,7 @@ public class User implements Serializable{
     private Boolean active;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonIgnore
     @JoinTable(name = "USER_AUTHORITY", joinColumns = {
             @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")}, inverseJoinColumns = {
             @JoinColumn(name = "ROLE_ID", referencedColumnName = "ROLE_ID")})
@@ -103,6 +105,8 @@ public class User implements Serializable{
     @Column(name = "IS_EMAIL_VERIFIED", nullable = false)
     private Boolean isEmailVerified;
     @OneToMany(targetEntity=Reclamation.class, mappedBy="user")
+    @JsonIgnore
+    
 	private List<Reclamation> reclamations = new ArrayList<>();
 }
     
