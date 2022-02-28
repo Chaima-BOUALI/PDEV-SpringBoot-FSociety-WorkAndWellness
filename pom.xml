@@ -11,7 +11,7 @@
 	<groupId>tn.esprit.spring</groupId>
 	<artifactId>WorkandWellness</artifactId>
 	<version>1.0.0</version>
-	<name>WorkAndWellness-1.0</name>
+	<name>WorkAndWellness</name>
 	<description>PIDEV</description>
 	<properties>
 		<java.version>1.8</java.version>

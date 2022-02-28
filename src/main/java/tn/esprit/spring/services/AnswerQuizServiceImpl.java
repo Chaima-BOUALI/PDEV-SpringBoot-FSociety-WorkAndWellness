@@ -24,7 +24,7 @@ AnswerQuizRepository answerQuizRepository;
 
 	@Override
 	public void deleteAnswerQuiz(int id) {
-answerQuizRepository.deleteById(id);		
+		answerQuizRepository.deleteById(id);		
 	}
 
 	@Override
