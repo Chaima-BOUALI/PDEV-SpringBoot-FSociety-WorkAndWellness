@@ -13,36 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
-import tn.esprit.spring.services.IServiceAnswerQuiz;
+import tn.esprit.spring.entities.Role;
+import tn.esprit.spring.services.IServiceRole;
 
 @EnableSwagger2
 @RestController
-@RequestMapping("/AnswerQuiz")
-public class AnswerQuizController {
+@RequestMapping("/Roles_Management")
+public class RoleController {
 @Autowired
-IServiceAnswerQuiz ServiceAnswerQuiz;
-
-@GetMapping("/ShowQuizAnswers/{QuizAnswer-id}")
+IServiceRole roleservice; 
+@GetMapping("/ShowRoles/{Role-id}")
 @ResponseBody
-public AnswerQuiz retrieveAnswerQuiz(@PathVariable("QuizAnswer-id") int idAnswerQuiz ) {
-return ServiceAnswerQuiz.retrieveAnswerQuiz(idAnswerQuiz);
+public Role retrieveRole(@PathVariable("Role-id") int idRole ) {
+return roleservice.retrieveRoles(idRole);
 }
-@PostMapping("/add-answers")
+@PostMapping("/add-Role")
 @ResponseBody
-public AnswerQuiz addAnswerQuiz(@RequestBody AnswerQuiz a)
+public Role addRole(@RequestBody Role r)
 {
-	AnswerQuiz answers= ServiceAnswerQuiz.addAnswerQuiz(a);
-return answers;
+	Role role= roleservice.addRoles(r);
+return role;
 }
-@DeleteMapping("/remove-answers/{QuizAnswer-id}")
+@DeleteMapping("/remove-roles/{Roles-id}")
 @ResponseBody
-public void removeAnswers(@PathVariable("QuizAnswer-id") int idAnswerQuiz) {
-ServiceAnswerQuiz.deleteAnswerQuiz(idAnswerQuiz);
+public void removeRoles(@PathVariable("Roles-id") int idRole) {
+roleservice.deleteRoles(idRole);
 }
 
-@PutMapping("/modify-answers")
+@PutMapping("/modify-roles")
 @ResponseBody
-public AnswerQuiz modifyAnswerQuiz(@RequestBody AnswerQuiz answers) {
-return ServiceAnswerQuiz.updateAnswerQuiz(answers);
+public Role modifyRole(@RequestBody Role roles) {
+return roleservice.updateRoles(roles);
 }
 }

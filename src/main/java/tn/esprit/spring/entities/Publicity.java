@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -67,5 +69,6 @@ public class Publicity implements Serializable{
 	@Lob
 	private byte[] dataImage;
 	@ManyToMany
+	@JsonIgnore
     Set<User> users;
 }

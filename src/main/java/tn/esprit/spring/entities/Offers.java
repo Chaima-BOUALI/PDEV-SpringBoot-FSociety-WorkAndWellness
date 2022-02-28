@@ -22,6 +22,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -71,7 +73,9 @@ public class Offers implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateOffer; 
 	@ManyToOne
+	@JsonIgnore
 	private Partnership partnerships;
 	@ManyToMany
+	@JsonIgnore
     Set<User> users;
 }

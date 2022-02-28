@@ -18,6 +18,8 @@ import javax.persistence.Table;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -64,8 +66,10 @@ public class Forum implements Serializable {
 	@Lob
 	private byte[] dataImage;
 	@OneToMany(mappedBy = "forum")
+	@JsonIgnore
 	private Set<Subjects> subject;
 	@ManyToMany
+	@JsonIgnore
 	@JoinTable(name = "forum_user", joinColumns = { @JoinColumn(name = "idforum") }, inverseJoinColumns = {
 			@JoinColumn(name = "idUser") })
 	Set<User> users;
