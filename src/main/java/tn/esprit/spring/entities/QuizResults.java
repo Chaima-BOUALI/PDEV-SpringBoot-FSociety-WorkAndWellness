@@ -38,9 +38,8 @@ public class QuizResults implements Serializable {/**
 	private int idQuizresults; 
 	@Column(length = 3000)
 	private String nameResults; 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer idDocument;
+	private Date dateEvent;
+	private int idDocument;
 	@Column(length = 3000)
 	private String documentName;
 	@Column(length = 3000)
@@ -48,8 +47,6 @@ public class QuizResults implements Serializable {/**
 	@Column(length = 3000)
 	@Lob
 	private byte[] dataDocument;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idImage;
 	@Column(length = 3000)
 	private String imageName;

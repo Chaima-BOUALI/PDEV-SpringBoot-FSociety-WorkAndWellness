@@ -6,12 +6,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,15 +23,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Entity(name = "QUIZES")
+
+@Entity(name = "EVENT_SUBSCRIPTION")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EnableScheduling
-@Table(name = "QUIZ_TABLE")
-public class Quiz implements Serializable{
+@Table(name = "EVENT_SUBSCRIPTION_TABLE")
+public class EventSubscription implements Serializable {
 
 	/**
 	 * 
@@ -40,34 +40,12 @@ public class Quiz implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idQuiz; 
+	private int idEventSubscription;
 	@Column(length = 3000)
-	private String nameQuiz; 
-	@Column(length = 3000)
-	private String descriptionQuiz; 
-	@Enumerated(EnumType.STRING)
-	private TypeQuiz TypeQuiz; 
-	private Date dateEvent;
-	private int idDocument;
-	@Column(length = 3000)
-	private String documentName;
-	@Column(length = 3000)
-	private String documentType;
-	@Column(length = 3000)
-	@Lob
-	private byte[] dataDocument;
-	private int idImage;
-	@Column(length = 3000)
-	private String imageName;
-	@Column(length = 3000)
-	private String imageType;
-	@Column(length = 3000)
-	private String imageURL;
-	@Lob
-	private byte[] dataImage;
+	private String subscriptionContent;
 	@Temporal(TemporalType.DATE)
-	private Date dateQuiz; 
+	private Date dateNotification;
 	@ManyToMany
-    Set<User> users;
-	
+	Set<User> users;
+
 }

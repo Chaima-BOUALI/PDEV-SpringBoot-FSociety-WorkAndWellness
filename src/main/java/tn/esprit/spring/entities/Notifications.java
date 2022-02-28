@@ -2,14 +2,17 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,28 +24,29 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-@Entity(name = "ANSWER_QUIZ")
+@Entity(name = "NOTIFICATIONS")
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EnableScheduling
-@Table(name = "QUIZ_ANSWER_TABLE")
-public class AnswerQuiz implements Serializable{/**
+@Table(name = "NOTIFICATIONS_TABLE")
+public class Notifications implements Serializable{
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idAnswerQuiz; 
+	private int idNotifications; 
 	@Column(length = 3000)
-	private String nameAnswer; 
+	private String NotificationObject; 
 	@Column(length = 3000)
-	private String AnswerContent;
-	private Date dateEvent;
+	private String NotificationContent; 
+	@Temporal(TemporalType.DATE)
+	private Date dateNotification; 
 	private int idDocument;
 	@Column(length = 3000)
 	private String documentName;
@@ -60,8 +64,4 @@ public class AnswerQuiz implements Serializable{/**
 	private String imageURL;
 	@Lob
 	private byte[] dataImage;
-
-    @OneToOne(mappedBy = "answers")
-    private QuestionsQuiz questions ;
-
 }
