@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,6 +46,7 @@ public class Reaction implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private ReactionType ReactionType; 
 	@ManyToMany
+	@JsonIgnore
     Set<User> users;
 
 }

@@ -17,6 +17,7 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -62,6 +63,7 @@ public class Reclamation implements Serializable{
 	@Lob
 	private byte[] dataImage;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name="USER_ID")
 	private User user ;
 	

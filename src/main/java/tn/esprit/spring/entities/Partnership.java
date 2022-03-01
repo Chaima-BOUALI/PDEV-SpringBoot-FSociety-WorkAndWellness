@@ -20,6 +20,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -72,5 +74,6 @@ public class Partnership implements Serializable{
 		@OneToMany(mappedBy="partnerships")
 	    private Set<Offers> offers;
 		@ManyToMany
+		@JsonIgnore
 	    Set<User> users;
 }

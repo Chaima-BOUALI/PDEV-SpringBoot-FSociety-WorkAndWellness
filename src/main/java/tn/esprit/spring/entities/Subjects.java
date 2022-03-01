@@ -20,6 +20,8 @@ import javax.persistence.Table;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -67,8 +69,10 @@ public class Subjects implements Serializable{
 	@Lob
 	private byte[] dataImage;
 	@ManyToOne
+	@JsonIgnore
 	private Forum forum;
 	@ManyToOne
+	@JsonIgnore
 	private Partnership partnerships;
 }
 
