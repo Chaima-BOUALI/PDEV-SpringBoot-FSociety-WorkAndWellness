@@ -20,17 +20,17 @@ import tn.esprit.spring.services.IServiceQuiz;
 @RequestMapping("/Quiz")
 public class QuizController {
 	@Autowired
-	IServiceQuiz servicequiz; 
+	IServiceQuiz iServiceQuiz; 
 	@PostMapping("/add-quiz")
 	@ResponseBody
 	public Quiz addQuiz(@RequestBody Quiz q)
 	{
-		Quiz quiz= servicequiz.addQuiz(q);
+		Quiz quiz= iServiceQuiz.addQuiz(q);
 		return quiz;
 	}
 	@DeleteMapping("/remove-quiz/{Quiz-id}")
 	@ResponseBody
 	public void removeQuizes(@PathVariable("Quiz-id") int idQuiz) {
-	servicequiz.deleteQuiz(idQuiz);
+		iServiceQuiz.deleteQuiz(idQuiz);
 	}
 }

@@ -2,28 +2,27 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,43 +45,26 @@ public class Quiz implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idQuiz; 
-	@Column(length = 3000)
-	private String nameQuiz; 
-	@Column(length = 3000)
-	private Float result; 
-	@Column(length = 3000)
-	private String descriptionQuiz; 
-	@Enumerated(EnumType.STRING)
-	private TypeQuiz TypeQuiz; 
-	private Date dateEvent;
+	@OneToOne
 	@JsonIgnore
-	private int idDocument;
-	
-	@Column(length = 3000)
+	private User createdBy;
+
+	@Size(min = 2, max = 100, message = "The name must be between 2 and 100 messages.")
+	@NotNull(message = "Please provide a name")
+	private String name;
+
+	@Size(max = 500, message = "The description can't be longer than 500 characters.")
+	@NotNull(message = "Please, provide a description")
+	private String description;
+
+	@OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@Lob
-	@JsonIgnore
-	private byte[] dataDocument;
-	private int idImage;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageType;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageURL;
-	@Lob
-	@JsonIgnore
-	private byte[] dataImage;
-	@Temporal(TemporalType.DATE)
-	private Date dateQuiz; 
+	private List<QuestionsQuiz> questionsQuizs;
+
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+	private Calendar createdDate;
+
+	private Boolean isPublished = false;
 	@ManyToMany
 	@JsonIgnore
     Set<User> users;
