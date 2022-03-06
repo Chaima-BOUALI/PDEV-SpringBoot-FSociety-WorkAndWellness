@@ -1,6 +1,8 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,9 +46,11 @@ public class QuestionsQuiz implements Serializable{
 	private String nameQuestion; 
 	@Column(length = 3000)
 	private String QuestionContent;
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JsonIgnore
-    private AnswerQuiz answers;
-	
-
+	@JoinColumn(name="idQuiz")
+	private Quiz quiz ;
+	@OneToMany(targetEntity=AnswerQuiz.class, mappedBy="questions")
+    @JsonIgnore
+	private List<AnswerQuiz> answer = new ArrayList<>();
 }

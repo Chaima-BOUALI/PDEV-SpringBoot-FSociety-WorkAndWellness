@@ -1,4 +1,4 @@
-package tn.esprit.spring.entities;
+package tn.esprit.spring.entities.tokens;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -17,11 +17,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entities.User;
 
 
 @Getter
@@ -52,6 +55,7 @@ public class PasswordResetToken implements Serializable{
 	    private Instant expiryDate;
 
 	    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+	    @JsonIgnore
 	    @JoinColumn(nullable = false, name = "USER_ID")
 	    private User user;
 }

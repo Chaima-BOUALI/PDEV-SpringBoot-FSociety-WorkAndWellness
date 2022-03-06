@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.Notifications;
 import tn.esprit.spring.services.IServiceNotifications;
 
 @EnableSwagger2
+@Api(tags = "Notifications Management")
 @RestController
 @RequestMapping("/Notifications")
 public class NotificationsController {

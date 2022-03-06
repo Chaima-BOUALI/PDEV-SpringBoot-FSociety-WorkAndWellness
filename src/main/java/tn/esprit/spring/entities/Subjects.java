@@ -51,22 +51,31 @@ public class Subjects implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Subject Subject; 
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 	@ManyToOne
 	@JsonIgnore

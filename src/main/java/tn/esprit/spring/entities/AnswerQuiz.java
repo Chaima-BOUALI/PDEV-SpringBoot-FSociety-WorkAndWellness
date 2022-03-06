@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -41,30 +43,41 @@ public class AnswerQuiz implements Serializable{/**
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAnswerQuiz; 
 	@Column(length = 3000)
+	
 	private String nameAnswer; 
 	@Column(length = 3000)
+
 	private String AnswerContent;
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
-
-    @OneToOne(mappedBy = "answers")
-    @JsonIgnore
-    private QuestionsQuiz questions ;
+    @ManyToOne
+	@JsonIgnore
+	@JoinColumn(name="idAnswer")
+	private QuestionsQuiz questions ;
 
 }

@@ -3,8 +3,8 @@ package tn.esprit.spring.repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import tn.esprit.spring.entities.QuizResults;
+import tn.esprit.spring.entities.Forum;
 @Repository
-public interface QuizResultsRepository extends CrudRepository<QuizResults, Integer> {
+public interface FroumRepository extends CrudRepository<Forum, Integer> {
 
 }

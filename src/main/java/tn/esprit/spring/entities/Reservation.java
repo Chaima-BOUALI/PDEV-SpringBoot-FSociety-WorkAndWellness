@@ -46,21 +46,30 @@ public class Reservation implements Serializable{
 		@Temporal(TemporalType.DATE)
 		private Date dateReservation; 
 		private Date dateEvent;
+		@JsonIgnore
 		private int idDocument;
 		@Column(length = 3000)
+		@JsonIgnore
 		private String documentName;
 		@Column(length = 3000)
+		@JsonIgnore
 		private String documentType;
 		@Column(length = 3000)
+		@JsonIgnore
 		@Lob
 		private byte[] dataDocument;
+		@JsonIgnore
 		private int idImage;
 		@Column(length = 3000)
+		@JsonIgnore
 		private String imageName;
+		@JsonIgnore
 		@Column(length = 3000)
 		private String imageType;
+		@JsonIgnore
 		@Column(length = 3000)
 		private String imageURL;
+		@JsonIgnore
 		@Lob
 		private byte[] dataImage;
 		@ManyToMany

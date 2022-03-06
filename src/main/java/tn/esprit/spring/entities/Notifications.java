@@ -19,6 +19,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -47,21 +49,30 @@ public class Notifications implements Serializable{
 	private String NotificationContent; 
 	@Temporal(TemporalType.DATE)
 	private Date dateNotification; 
+	@JsonIgnore
 	private int idDocument;
+	@JsonIgnore
 	@Column(length = 3000)
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 }

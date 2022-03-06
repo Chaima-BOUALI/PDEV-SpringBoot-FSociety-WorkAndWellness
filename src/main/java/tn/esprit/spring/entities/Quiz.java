@@ -1,7 +1,9 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -46,31 +49,45 @@ public class Quiz implements Serializable{
 	@Column(length = 3000)
 	private String nameQuiz; 
 	@Column(length = 3000)
+	private Float result; 
+	@Column(length = 3000)
 	private String descriptionQuiz; 
 	@Enumerated(EnumType.STRING)
 	private TypeQuiz TypeQuiz; 
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
+	
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
 	@Lob
+	@JsonIgnore
 	private byte[] dataDocument;
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 	@Temporal(TemporalType.DATE)
 	private Date dateQuiz; 
 	@ManyToMany
 	@JsonIgnore
     Set<User> users;
+	 @OneToMany(targetEntity=QuestionsQuiz.class, mappedBy="quiz")
+	    @JsonIgnore
+		private List<QuestionsQuiz> questions = new ArrayList<>();
 	
 }

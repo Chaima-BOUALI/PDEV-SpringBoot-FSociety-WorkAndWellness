@@ -33,7 +33,7 @@ public class Subscription {
     @Id
     @Column(nullable = false, updatable = false , name="id_Subscription")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSubscription;
+    private int idSubscription;
 
     @Column
     @Enumerated(EnumType.STRING)

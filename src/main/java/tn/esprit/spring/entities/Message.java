@@ -52,22 +52,31 @@ public class Message implements Serializable{
 	@Column(length = 3000)
 	private String content; 
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 	@ManyToMany
 	@JsonIgnore

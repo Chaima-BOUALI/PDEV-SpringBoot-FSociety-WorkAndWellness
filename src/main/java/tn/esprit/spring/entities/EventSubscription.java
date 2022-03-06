@@ -18,6 +18,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,7 +47,12 @@ public class EventSubscription implements Serializable {
 	private String subscriptionContent;
 	@Temporal(TemporalType.DATE)
 	private Date dateNotification;
+	@Column(length = 3000)
+	private int MaxEventSubscriptions;
+	@Column(length = 3000)
+	private int EventSubscriptions;
 	@ManyToMany
+	@JsonIgnore
 	Set<User> users;
 
 }
