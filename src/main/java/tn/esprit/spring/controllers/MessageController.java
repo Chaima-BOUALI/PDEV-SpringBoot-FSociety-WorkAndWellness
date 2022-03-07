@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import tn.esprit.spring.entities.Message;
 import tn.esprit.spring.services.IServiceMessage;
 
 @EnableSwagger2
+@Api(tags = "Messages Management")
+
 @RestController
 @RequestMapping("/message")
 public class MessageController {

@@ -9,26 +9,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.Quiz;
 import tn.esprit.spring.services.IServiceQuiz;
 
 @EnableSwagger2
+@Api(tags = "Quiz Management")
 @RestController
 @RequestMapping("/Quiz")
 public class QuizController {
 	@Autowired
-	IServiceQuiz servicequiz; 
+	IServiceQuiz iServiceQuiz; 
 	@PostMapping("/add-quiz")
 	@ResponseBody
 	public Quiz addQuiz(@RequestBody Quiz q)
 	{
-		Quiz quiz= servicequiz.addQuiz(q);
+		Quiz quiz= iServiceQuiz.addQuiz(q);
 		return quiz;
 	}
 	@DeleteMapping("/remove-quiz/{Quiz-id}")
 	@ResponseBody
 	public void removeQuizes(@PathVariable("Quiz-id") int idQuiz) {
-	servicequiz.deleteQuiz(idQuiz);
+		iServiceQuiz.deleteQuiz(idQuiz);
 	}
 }

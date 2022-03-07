@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.Subscription;
 import tn.esprit.spring.services.IServiceSubscription;
 
 @EnableSwagger2
+@Api(tags = "Subscriptions Management")
 @RestController
 @RequestMapping("/Subscription")
 public class SubscriptionController {

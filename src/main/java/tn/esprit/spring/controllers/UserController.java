@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.services.IServiceUser;
 
 @EnableSwagger2
 @RestController
+@Api(tags = "Users Management")
 @RequestMapping("/user")
 public class UserController {
 

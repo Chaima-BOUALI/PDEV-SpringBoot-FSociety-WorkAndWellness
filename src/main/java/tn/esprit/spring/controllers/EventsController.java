@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import tn.esprit.spring.entities.Events;
 import tn.esprit.spring.services.IServiceEvents;
 
 @EnableSwagger2
+@Api(tags = "Events Management")
 @RestController
 @RequestMapping("/events")
 public class EventsController {

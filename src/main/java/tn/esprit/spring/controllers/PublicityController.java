@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.Publicity;
 import tn.esprit.spring.services.IServicePublicity;
 
 @EnableSwagger2
+@Api(tags = "Publicity Management")
 @RestController
 @RequestMapping("/Publicity")
 public class PublicityController {

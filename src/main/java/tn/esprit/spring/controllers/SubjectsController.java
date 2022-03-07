@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.Subjects;
 import tn.esprit.spring.services.IServiceSubjects;
 
 @EnableSwagger2
+@Api(tags = "Subjects Management")
 @RestController
 @RequestMapping("/Subjects")
 public class SubjectsController {
