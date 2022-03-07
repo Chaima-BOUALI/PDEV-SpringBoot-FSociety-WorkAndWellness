@@ -5,39 +5,43 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tn.esprit.spring.entities.Articles;
+import tn.esprit.spring.entities.EventSubscription;
 import tn.esprit.spring.entities.Forum;
+import tn.esprit.spring.repositories.FroumRepository;
 @Service
 public class ForumServiceImpl implements IServiceForum {
 @Autowired
+ FroumRepository froumRepository;
 
 	@Override
 	public List<Forum> retrieveAllForum() {
-		// TODO Auto-generated method stub
-		return null;
+		
+	return (List<Forum>) froumRepository.findAll();
 	}
 
 	@Override
 	public Forum addForum(Forum f) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		 return froumRepository.save(f);
 	}
 
 	@Override
 	public void deleteForum(int id) {
-		// TODO Auto-generated method stub
+		froumRepository.deleteById(id);
 
 	}
 
 	@Override
 	public Forum updateForum(Forum f) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return froumRepository.save(f);
 	}
 
 	@Override
 	public Forum retrieveForum(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Forum F = froumRepository.findById(id).get();
+		return F;
 	}
 
 }

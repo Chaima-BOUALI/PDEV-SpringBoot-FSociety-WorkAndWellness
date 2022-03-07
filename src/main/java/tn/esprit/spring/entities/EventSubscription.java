@@ -47,6 +47,10 @@ public class EventSubscription implements Serializable {
 	private String subscriptionContent;
 	@Temporal(TemporalType.DATE)
 	private Date dateNotification;
+	@Column(length = 3000)
+	private int MaxEventSubscriptions;
+	@Column(length = 3000)
+	private int EventSubscriptions;
 	@ManyToMany
 	@JsonIgnore
 	Set<User> users;

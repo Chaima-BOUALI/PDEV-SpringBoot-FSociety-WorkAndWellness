@@ -2,7 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -75,10 +75,6 @@ public class User implements Serializable{
     @Column(name = "ADDRESSE")
   //  @NullOrNotBlank(message = "adresse can not be blank")
     private String adresse;
-    
-    @Column(name = "telephone")
-//    @NullOrNotBlank(message = "telephone can not be blank")
-    private String telephone;
 
     @Column(name = "LAST_NAME")
   //  @NullOrNotBlank(message = "Last name can not be blank")
@@ -89,7 +85,7 @@ public class User implements Serializable{
     private String phoneNumber;
     
     @Column(name = "postal_Code")
-  //  @NullOrNotBlank(message = "Last name can not be blank")
+   // @NullOrNotBlank(message = "Last name can not be blank")
     private String postalCode;
 
     @Column(name = "IS_ACTIVE", nullable = false)
@@ -103,10 +99,10 @@ public class User implements Serializable{
     private Set<Role> roles = new HashSet<>();
 
     @Column(name = "IS_EMAIL_VERIFIED", nullable = false)
+    
     private Boolean isEmailVerified;
     @OneToMany(targetEntity=Reclamation.class, mappedBy="user")
     @JsonIgnore
-    
 	private List<Reclamation> reclamations = new ArrayList<>();
 }
     

@@ -10,14 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.time.LocalDate;
 import java.util.Date;
-
+import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
 
@@ -33,7 +33,7 @@ public class Subscription {
     @Id
     @Column(nullable = false, updatable = false , name="id_Subscription")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idSubscription;
+    private int idSubscription;
 
     @Column
     @Enumerated(EnumType.STRING)

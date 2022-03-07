@@ -11,8 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -49,24 +49,38 @@ public class Offers implements Serializable{
 	@Column(length = 3000)
 	private String nameOffer; 
 	@Column(length = 3000)
+	private int MaxOffers;
+	@Column(length = 3000)
+	private int OffersNumber;
+	@Column(length = 3000)
 	private String descriptionOffer; 
+	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
+	@JsonIgnore
 	@Column(length = 3000)
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 	@Enumerated(EnumType.STRING)
 	private OfferType OfferType; 

@@ -9,11 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -51,24 +52,36 @@ public class Publicity implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date datePublicity; 
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
+	@JsonIgnore
 	@Lob
 	private byte[] dataDocument;
+	@JsonIgnore
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
+	@JsonIgnore
 	@Column(length = 3000)
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
+	@JsonIgnore
 	private byte[] dataImage;
 	@ManyToMany
 	@JsonIgnore
     Set<User> users;
+	@OneToMany(mappedBy="partnerships")
+	@JsonIgnore
+    private Set<Offers> offers;
 }

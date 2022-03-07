@@ -49,12 +49,19 @@ public class Events implements Serializable {
 	private String nameEvent;
 	@Column(length = 3000)
 	private String EventDescription;
+	@Column(length = 3000)
+	private int EventAttendent;
+	@Column(length = 3000)
+	private int MaxEventAttendent;
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
 	@Lob
@@ -62,10 +69,13 @@ public class Events implements Serializable {
 	private byte[] dataDocument;
 	private int idImage;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageType;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String imageURL;
 	@Lob
 	@JsonIgnore
@@ -76,6 +86,9 @@ public class Events implements Serializable {
 	@ManyToMany
 	@JsonIgnore
 	Set<Subscription> subscriptions;
+	@ManyToMany
+	@JsonIgnore
+	Set<Subscription> partnerships;
 	@ManyToMany
 	@JsonIgnore
 	Set<User> users;

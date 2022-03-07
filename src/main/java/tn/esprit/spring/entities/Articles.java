@@ -48,10 +48,13 @@ public class Articles  implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date dateArticle; 
 	private Date dateEvent;
+	@JsonIgnore
 	private int idDocument;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentName;
 	@Column(length = 3000)
+	@JsonIgnore
 	private String documentType;
 	@Column(length = 3000)
 	@Lob
