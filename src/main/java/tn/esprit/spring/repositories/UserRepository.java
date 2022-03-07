@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.spring.entities.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-	/* Optional<User> findByUsername(String username);
+	Optional<User> findByUsername(String username);
 
 	    Boolean existsByEmail(String email);
 
@@ -18,5 +18,5 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 		//Optional<Property> findById(Integer user);
 		
-		Optional<User> findById(Integer idUser);*/
+		Optional<User> findById(Integer idUser);
 }

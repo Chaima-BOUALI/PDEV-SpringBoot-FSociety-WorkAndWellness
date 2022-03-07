@@ -14,4 +14,7 @@ public interface IServiceEvents {
 	Events updateEvents(Events e);
 
 	Events retrieveEvents (int id);
+	
+	void AddAndAffect(List<Events> le, Integer idUser);
+
 }

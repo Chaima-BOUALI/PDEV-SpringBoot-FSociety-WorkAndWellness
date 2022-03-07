@@ -104,5 +104,9 @@ public class User implements Serializable{
     @OneToMany(targetEntity=Reclamation.class, mappedBy="user")
     @JsonIgnore
 	private List<Reclamation> reclamations = new ArrayList<>();
+    public int getUserId() {
+		return idUser;
+	}
+
 }
     

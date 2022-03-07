@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 import tn.esprit.spring.entities.Events;
 import tn.esprit.spring.services.IServiceEvents;
+import tn.esprit.spring.services.IServiceUser;
 
 @EnableSwagger2
 @Api(tags = "Events Management")
@@ -26,6 +26,7 @@ import tn.esprit.spring.services.IServiceEvents;
 public class EventsController {
 @Autowired
 IServiceEvents serviceEvents;
+IServiceUser iServiceUser; 
 
 
 
@@ -58,6 +59,10 @@ return serviceEvents.retrieveEvents(idEvent);
 @ResponseBody
 public Events modifyEvents(@RequestBody Events e) {
 return serviceEvents.updateEvents(e);
+}
+@PostMapping("/add-events/{id-users}")
+public void AddAndAffect(@RequestBody List<Events> le, @PathVariable("id-user") Integer idUser){
+	iServiceUser.AddAndAffect(le,idUser);
 }
 }
 
