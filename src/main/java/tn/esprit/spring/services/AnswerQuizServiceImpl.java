@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import tn.esprit.spring.entities.AnswerQuiz;
+import tn.esprit.spring.entities.QuestionsQuiz;
 import tn.esprit.spring.repositories.AnswerQuizRepository;
 
 @Service
@@ -24,7 +24,7 @@ AnswerQuizRepository answerQuizRepository;
 
 	@Override
 	public void deleteAnswerQuiz(int id) {
-		answerQuizRepository.deleteById(id);		
+answerQuizRepository.deleteById(id);		
 	}
 
 	@Override
@@ -37,5 +37,23 @@ AnswerQuizRepository answerQuizRepository;
 		AnswerQuiz aq = answerQuizRepository.findById(id).get();
 return aq;
 	}
+
+/*	private void mergeAnswers(AnswerQuiz currentAnswer, AnswerQuiz newAnswer) {
+		currentAnswer.setText(newAnswer.getText());
+
+		if (newAnswer.getOrder() != null) {
+			currentAnswer.setOrder(newAnswer.getOrder());
+		}
+	}*/
+	@Override
+	public List<AnswerQuiz> findAnswersByQuestion(QuestionsQuiz question) {
+		return answerQuizRepository.findByQuestionOrderByOrderAsc(question);
+	}
+
+	@Override
+	public int countAnswersInQuestion(QuestionsQuiz question) {
+		return answerQuizRepository.countByQuestion(question);
+	}
+
 
 }
