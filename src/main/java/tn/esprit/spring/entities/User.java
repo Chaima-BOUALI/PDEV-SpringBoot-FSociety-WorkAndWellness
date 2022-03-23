@@ -22,6 +22,8 @@ import javax.persistence.SequenceGenerator;
 //import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotNull;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.NaturalId;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -33,6 +35,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entities.validation.annotation.NullOrNotBlank;
 
 @Getter
 @Setter
@@ -57,35 +60,35 @@ public class User implements Serializable{
     private int idUser; 
     @NaturalId
     @Column(name = "EMAIL", unique = true)
-  //  @NotBlank(message = "User email cannot be null")
+    @NotBlank(message = "User email cannot be null")
     private String email;
 
     @Column(name = "USERNAME", unique = true)
-  //  @NullOrNotBlank(message = "Username can not be blank")
+  @NullOrNotBlank(message = "Username can not be blank")
     private String username;
 
     @Column(name = "PASSWORD")
-   // @NotNull(message = "Password cannot be null")
+   @NotNull(message = "Password cannot be null")
     private String password;
 
     @Column(name = "FIRST_NAME")
-   // @NullOrNotBlank(message = "First name can not be blank")
+    @NullOrNotBlank(message = "First name can not be blank")
     private String firstName;
     
     @Column(name = "ADDRESSE")
-  //  @NullOrNotBlank(message = "adresse can not be blank")
+  @NullOrNotBlank(message = "adresse can not be blank")
     private String adresse;
 
     @Column(name = "LAST_NAME")
-  //  @NullOrNotBlank(message = "Last name can not be blank")
+  @NullOrNotBlank(message = "Last name can not be blank")
     private String lastName;
     
     @Column(name = "phone_Number")
-  //  @NullOrNotBlank(message = "Last name can not be blank")
+  @NullOrNotBlank(message = "Last name can not be blank")
     private String phoneNumber;
     
     @Column(name = "postal_Code")
-   // @NullOrNotBlank(message = "Last name can not be blank")
+   @NullOrNotBlank(message = "Last name can not be blank")
     private String postalCode;
 
     @Column(name = "IS_ACTIVE", nullable = false)
@@ -107,6 +110,7 @@ public class User implements Serializable{
     public int getUserId() {
 		return idUser;
 	}
+
 
 }
     

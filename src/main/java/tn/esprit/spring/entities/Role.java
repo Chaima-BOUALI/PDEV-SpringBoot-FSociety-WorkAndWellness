@@ -25,8 +25,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tn.esprit.spring.entities.validation.annotation.NullOrNotBlank;
 
-@Getter
+
 @Setter
 @Builder
 @AllArgsConstructor
@@ -53,8 +54,13 @@ public class Role implements Serializable{
     @Enumerated(EnumType.STRING)
     @NaturalId
     private RoleName role;
+    
+    @Column(name = "RoleNames")
+    @NullOrNotBlank(message = "RoleNames can not be blank")
+      private String RoleName;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<User> userList = new HashSet<>();
 }

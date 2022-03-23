@@ -17,6 +17,17 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
+			<!-- Spring Security Config -->
+<dependency>
+  <groupId>org.springframework.security</groupId>
+  <artifactId>spring-security-config</artifactId>
+</dependency>
+ 
+<!-- Spring Security Web -->
+<dependency>
+  <groupId>org.springframework.security</groupId>
+  <artifactId>spring-security-web</artifactId>
+</dependency>
 	  <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
 <dependency>
     <groupId>io.jsonwebtoken</groupId>
@@ -29,6 +40,7 @@
     <groupId>javax.validation</groupId>
     <artifactId>validation-api</artifactId>
 </dependency>
+
 	<dependency>
 
 		<groupId>io.springfox</groupId>
@@ -93,6 +105,7 @@
 			<artifactId>spring-batch-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

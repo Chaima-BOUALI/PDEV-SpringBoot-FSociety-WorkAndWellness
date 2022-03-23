@@ -53,6 +53,7 @@ public class Events implements Serializable {
 	private int EventAttendent;
 	@Column(length = 3000)
 	private int MaxEventAttendent;
+	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
 	@JsonIgnore
 	private int idDocument;

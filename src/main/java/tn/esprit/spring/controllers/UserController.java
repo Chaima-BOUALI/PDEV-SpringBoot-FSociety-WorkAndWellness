@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import lombok.RequiredArgsConstructor;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.services.IServiceUser;
 
@@ -24,6 +26,7 @@ import tn.esprit.spring.services.IServiceUser;
 @RestController
 @Api(tags = "Users Management")
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
 
@@ -35,7 +38,7 @@ public List<User> getUsers() {
 	List<User> listUsers = serviceUser.retrieveAllUsers();
 return listUsers;
 }
-//@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ENTERPRISE') or hasRole('ROLE_EMPLOYEE')")
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ENTERPRISE') or hasRole('ROLE_EMPLOYEE')")
 
 
 @GetMapping("/showuser/{user-id}")
@@ -54,8 +57,18 @@ User user= serviceUser.addUser(u);
 return user;
 }
 
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ENTERPRISE')")
 
-//@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ENTERPRISE')")
+@PostMapping("/save-user-roles")
+@ResponseBody
+public Role SaveRole(@RequestBody Role r)
+{
+Role role= serviceUser.SaveRole(r);
+return r;
+}
+
+
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_ENTERPRISE')")
 
 
 @DeleteMapping("/remove-user/{user-id}")
@@ -63,7 +76,7 @@ return user;
 public void removeUser(@PathVariable("user-id") int idUser) {
 	serviceUser.deleteUser(idUser);
 }
-//@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
+@PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_EMPLOYEE')")
 
 @PutMapping("/modify-user")
 @ResponseBody
