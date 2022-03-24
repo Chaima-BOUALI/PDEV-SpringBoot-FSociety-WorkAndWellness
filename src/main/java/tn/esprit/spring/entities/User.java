@@ -22,6 +22,7 @@ import javax.persistence.SequenceGenerator;
 //import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotNull;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.NaturalId;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -57,11 +58,11 @@ public class User implements Serializable{
     private int idUser; 
     @NaturalId
     @Column(name = "EMAIL", unique = true)
-  //  @NotBlank(message = "User email cannot be null")
+    @NotBlank(message = "User email cannot be null")
     private String email;
 
     @Column(name = "USERNAME", unique = true)
-  //  @NullOrNotBlank(message = "Username can not be blank")
+  //@NullOrNotBlank(message = "Username can not be blank")
     private String username;
 
     @Column(name = "PASSWORD")

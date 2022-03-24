@@ -14,4 +14,6 @@ public interface IServiceMessage {
 	Message updateMessage (Message msg);
 
 	Message retrieveMessage (int id);
+	
+	
 }
