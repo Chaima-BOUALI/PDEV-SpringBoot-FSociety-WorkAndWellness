@@ -6,19 +6,20 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import tn.esprit.spring.entities.User;
+
 @Repository
 public interface UserRepository extends CrudRepository<User, Integer> {
-	//Optional<User> findByUsername(String username);
-	
-	User findByUsername (String username); 
 
-	    Boolean existsByEmail(String email);
+	Optional<User> findByUsername(String username);
 
-	    Optional<User> findByEmail(String email);
+	Boolean existsByEmail(String email);
 
-	    Boolean existsByUsername(String username);
+	Optional<User> findByEmail(String email);
 
-		//Optional<Property> findById(Integer user);
-		
-		Optional<User> findById(Integer idUser);
+	Boolean existsByUsername(String username);
+
+	// Optional<Property> findById(Integer user);
+
+	Optional<User> findById(Integer idUser);
+
 }

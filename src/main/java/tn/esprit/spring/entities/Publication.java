@@ -42,9 +42,9 @@ public class Publication implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPublication; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String namePublication; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String descriptionPublication; 
 	@Temporal(TemporalType.DATE)
 	private Date datePublication; 

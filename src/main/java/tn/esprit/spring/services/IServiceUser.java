@@ -4,7 +4,6 @@ import java.util.List;
 
 import tn.esprit.spring.entities.Events;
 import tn.esprit.spring.entities.Role;
-import tn.esprit.spring.entities.RoleName;
 import tn.esprit.spring.entities.User;
 
 public interface IServiceUser {

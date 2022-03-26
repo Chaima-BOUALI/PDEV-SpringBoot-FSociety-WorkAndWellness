@@ -55,7 +55,7 @@ public class Subscription {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "id")
     private User user;
    
 }

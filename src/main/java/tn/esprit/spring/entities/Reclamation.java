@@ -31,7 +31,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EnableScheduling
-@Table(name = "RECLAMATION_TABLE")
+
 public class Reclamation implements Serializable{
 
 	/**
@@ -43,28 +43,21 @@ public class Reclamation implements Serializable{
 	private int idReclamation; 
 	@Temporal(TemporalType.DATE)
 	private Date dateReclamation; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String ObjectReclamation; 
-	private int idDocument;
-	@Column(length = 3000)
-	private String documentName;
-	@Column(length = 3000)
-	private String documentType;
-	@Column(length = 3000)
-	@Lob
-	private byte[] dataDocument;
+
 	private int idImage;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String imageName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String imageURL;
 	@Lob
 	private byte[] dataImage;
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name="USER_ID")
+	@JoinColumn(name="id")
 	private User user ;
 	
 

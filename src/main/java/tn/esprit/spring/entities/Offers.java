@@ -29,7 +29,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-@Entity(name = "OFFERS")
+@Entity
 @Getter
 @Setter
 @Builder
@@ -46,37 +46,26 @@ public class Offers implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idOffer; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String nameOffer; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private int MaxOffers;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private int OffersNumber;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String descriptionOffer; 
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
-	@JsonIgnore
-	private int idDocument;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@JsonIgnore
-	@Lob
-	private byte[] dataDocument;
+	
 	@JsonIgnore
 	private int idImage;
 	@JsonIgnore
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String imageName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageURL;
 	@Lob

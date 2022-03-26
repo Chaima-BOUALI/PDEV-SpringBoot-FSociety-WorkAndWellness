@@ -1,6 +1,6 @@
 package tn.esprit.spring.entities;
 
-public enum RoleName {
+public enum ERole {
 	   /**
      * Role admin authority role.
      */
@@ -10,6 +10,11 @@ public enum RoleName {
      * Role user authority role.
      */
     ROLE_USER,
+    
+    /**
+     * Role moderator authority role.
+     */
+    ROLE_MODERATOR,
     
     /**
      * Role Enterprise authority role.

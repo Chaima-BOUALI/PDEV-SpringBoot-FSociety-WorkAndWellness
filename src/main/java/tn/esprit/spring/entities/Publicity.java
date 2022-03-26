@@ -45,34 +45,23 @@ public class Publicity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPublicity; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String namePublicity; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String descriptionPublicity; 
 	@Temporal(TemporalType.DATE)
 	private Date datePublicity; 
 	private Date dateEvent;
-	@JsonIgnore
-	private int idDocument;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@JsonIgnore
-	@Lob
-	private byte[] dataDocument;
+	
 	@JsonIgnore
 	private int idImage;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageName;
 	@JsonIgnore
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageURL;
 	@Lob

@@ -2,8 +2,10 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,44 +37,36 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EnableScheduling
-@Table(name = "PARTNERSHIP_TABLE")
+//@Table(name = "PARTNERSHIP_TABLE")
 public class Partnership implements Serializable{
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
+		
+		
+		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private int idPartnership; 
-		@Column(length = 3000)
+		@Column(length = 1000)
 		private String partnershipDescription; 
-		@Column(length = 3000)
+		@Column(length = 1000)
 		private String namePartnership; 
-		@Column(length = 3000)
+		@Column(length = 1000)
 		private int EventAttendency;
 		private Date dateEvent;
-		@JsonIgnore
-		private int idDocument;
-		@Column(length = 3000)
-		@JsonIgnore
-		private String documentName;
-		@Column(length = 3000)
-		@JsonIgnore
-		private String documentType;
-		@Column(length = 3000)
-		@JsonIgnore
-		@Lob
-		private byte[] dataDocument;
+		
 		@JsonIgnore
 		private int idImage;
-		@Column(length = 3000)
+		@Column(length = 1000)
 		@JsonIgnore
 		private String imageName;
-		@Column(length = 3000)
+		@Column(length = 1000)
 		@JsonIgnore
 		private String imageType;
-		@Column(length = 3000)
+		@Column(length = 1000)
 		@JsonIgnore
 		private String imageURL;
 		@Lob
@@ -82,10 +76,13 @@ public class Partnership implements Serializable{
 		private PartnershipType PartnershipType; 
 		@Temporal(TemporalType.DATE)
 		private Date datePartnership; 
-		@OneToMany(mappedBy="partnerships")
+		
+		@OneToMany(mappedBy="partnerships",cascade = CascadeType.ALL)
 		@JsonIgnore
 	    private Set<Offers> offers;
-		@ManyToMany
-		@JsonIgnore
-	    Set<User> users;
+		
+		@OneToMany(mappedBy = "partnership")
+		private List<Subjects>  subject;
+		
+
 }

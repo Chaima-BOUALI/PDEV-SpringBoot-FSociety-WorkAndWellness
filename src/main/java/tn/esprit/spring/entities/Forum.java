@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,45 +47,32 @@ public class Forum implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idForum;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String forumName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String forumDescription;
 	  @Temporal(TemporalType.DATE)
 	  @JsonIgnore
 	private Date dateEvent;
-	@JsonIgnore
-	private int idDocument;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@JsonIgnore
-	@Lob
-	private byte[] dataDocument;
+	
 	private int idImage;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageURL;
 	@Lob
 	@JsonIgnore
 	private byte[] dataImage;
-	@OneToMany(mappedBy = "forum")
+	
+	@OneToMany(mappedBy = "forum",cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Subjects> subject;
-	@ManyToMany
-	@JsonIgnore
-	@JoinTable(name = "forum_user", joinColumns = { @JoinColumn(name = "idforum") }, inverseJoinColumns = {
-			@JoinColumn(name = "idUser") })
-	Set<User> users;
+	
+	
 
 }

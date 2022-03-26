@@ -11,8 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
+
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -26,6 +25,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 @Entity(name = "MESSAGES")
 @Getter
 @Setter
@@ -34,7 +34,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @EnableScheduling
 @Table(name = "MESSAGES_TABLE")
-public class Message implements Serializable{
+public class Message implements Serializable {
 
 	/**
 	 * 
@@ -43,42 +43,15 @@ public class Message implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMessage;
-	private int idSender; 
-	private int idReciever; 
+	
 	@Enumerated(EnumType.STRING)
-	private MessageType MessageType; 
+	private MessageType MessageType;
 	@Column(length = 3000)
 	private String sender;
 	@Column(length = 3000)
-	private String content; 
-	private Date dateEvent;
-	@JsonIgnore
-	private int idDocument;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@JsonIgnore
-	@Lob
-	private byte[] dataDocument;
-	@JsonIgnore
-	private int idImage;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageType;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String imageURL;
-	@Lob
-	@JsonIgnore
-	private byte[] dataImage;
+	private String content;
 	@ManyToMany
 	@JsonIgnore
-    Set<User> users;
+	Set<User> users;
+
 }

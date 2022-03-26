@@ -43,33 +43,22 @@ public class Notifications implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idNotifications; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String NotificationObject; 
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String NotificationContent; 
 	@Temporal(TemporalType.DATE)
 	private Date dateNotification; 
-	@JsonIgnore
-	private int idDocument;
-	@JsonIgnore
-	@Column(length = 3000)
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@JsonIgnore
-	@Lob
-	private byte[] dataDocument;
+	
 	@JsonIgnore
 	private int idImage;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageURL;
 	@Lob

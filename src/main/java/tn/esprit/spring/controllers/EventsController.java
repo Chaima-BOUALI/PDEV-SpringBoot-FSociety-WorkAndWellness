@@ -22,47 +22,46 @@ import tn.esprit.spring.services.IServiceUser;
 @EnableSwagger2
 @Api(tags = "Events Management")
 @RestController
-@RequestMapping("/events")
+@RequestMapping("/api/events")
 public class EventsController {
-@Autowired
-IServiceEvents serviceEvents;
-IServiceUser iServiceUser; 
+	@Autowired
+	IServiceEvents serviceEvents;
+	IServiceUser iServiceUser;
 
+	@PostMapping("/add-events")
+	@ResponseBody
+	public Events addEvents(@RequestBody Events e) {
+		Events events = serviceEvents.addEvents(e);
+		return e;
+	}
 
+	@DeleteMapping("/remove-event/{event-id}")
+	@ResponseBody
+	public void removeArticle(@PathVariable("event-id") int idEvent) {
+		serviceEvents.deleteEvents(idEvent);
+	}
 
+	@ResponseBody
+	@GetMapping("/showEvents")
+	public List<Events> getEvents() {
+		List<Events> listEvent = serviceEvents.retrieveAllEvents();
+		return listEvent;
+	}
 
-@PostMapping("/add-events")
-@ResponseBody
-public Events addEvents(@RequestBody Events e)
-{
-Events events =  serviceEvents.addEvents(e);
-return e;
-}
-@DeleteMapping("/remove-event/{event-id}")
-@ResponseBody
-public void removeArticle(@PathVariable("event-id") int idEvent) {
-	serviceEvents.deleteEvents(idEvent);
-}
+	@GetMapping("/showevent/{event-id}")
+	@ResponseBody
+	public Events retrieveArticles(@PathVariable("event-id") int idEvent) {
+		return serviceEvents.retrieveEvents(idEvent);
+	}
 
-@ResponseBody
-@GetMapping("/showEvents")
-public  List<Events> getEvents() {
-	List<Events> listEvent = serviceEvents.retrieveAllEvents();
-return listEvent;
-}
-@GetMapping("/showevent/{event-id}")
-@ResponseBody
-public Events retrieveArticles(@PathVariable("event-id") int idEvent) {
-return serviceEvents.retrieveEvents(idEvent);
-}
-@PutMapping("/modify-event")
-@ResponseBody
-public Events modifyEvents(@RequestBody Events e) {
-return serviceEvents.updateEvents(e);
-}
-@PostMapping("/add-events/{id-users}")
-public void AddAndAffect(@RequestBody List<Events> le, @PathVariable("id-user") Integer idUser){
-	iServiceUser.AddAndAffect(le,idUser);
-}
-}
+	@PutMapping("/modify-event")
+	@ResponseBody
+	public Events modifyEvents(@RequestBody Events e) {
+		return serviceEvents.updateEvents(e);
+	}
 
+	@PostMapping("/add-events/{id-users}")
+	public void AddAndAffect(@RequestBody List<Events> le, @PathVariable("id-user") Integer idUser) {
+		iServiceUser.AddAndAffect(le, idUser);
+	}
+}

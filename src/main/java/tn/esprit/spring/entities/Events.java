@@ -45,36 +45,25 @@ public class Events implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idEvent;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String nameEvent;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private String EventDescription;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private int EventAttendent;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	private int MaxEventAttendent;
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent;
-	@JsonIgnore
-	private int idDocument;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentName;
-	@Column(length = 3000)
-	@JsonIgnore
-	private String documentType;
-	@Column(length = 3000)
-	@Lob
-	@JsonIgnore
-	private byte[] dataDocument;
+	
 	private int idImage;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageName;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageType;
-	@Column(length = 3000)
+	@Column(length = 1000)
 	@JsonIgnore
 	private String imageURL;
 	@Lob
