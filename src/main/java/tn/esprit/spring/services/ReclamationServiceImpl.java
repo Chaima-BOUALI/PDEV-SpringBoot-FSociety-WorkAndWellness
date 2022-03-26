@@ -8,10 +8,13 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Notifications;
 import tn.esprit.spring.entities.Reclamation;
 import tn.esprit.spring.repositories.ReclamationRepository;
+import tn.esprit.spring.repositories.UserRepository;
 @Service
 public class ReclamationServiceImpl implements IServiceReclamation {
 @Autowired
 ReclamationRepository reclamationRepository; 
+@Autowired
+UserRepository userRepository;
 	@Override
 	public List<Reclamation> retrieveAllReclamation() {
 		return (List<Reclamation>) reclamationRepository.findAll();
@@ -38,5 +41,15 @@ ReclamationRepository reclamationRepository;
 		Reclamation rec  = reclamationRepository.findById(id).get();
 		return rec;		
 	}
+
+	@Override
+	public Reclamation AddReclamation(Integer id, Reclamation rec) {
+		return userRepository.findById(id).map(user -> {
+			rec.setUser(user);
+			return reclamationRepository.save(rec);
+		}).get();
+	}
+
+	
 
 }

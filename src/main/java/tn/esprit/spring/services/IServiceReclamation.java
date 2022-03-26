@@ -2,6 +2,8 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
+
+
 import tn.esprit.spring.entities.Reclamation;
 
 public interface IServiceReclamation {
@@ -15,5 +17,8 @@ public interface IServiceReclamation {
 	Reclamation updateReclamation (Reclamation r);
 
 	Reclamation retrieveReclamation (int id);
+	
+	
+	Reclamation AddReclamation(Integer id, Reclamation rec);
 
 }

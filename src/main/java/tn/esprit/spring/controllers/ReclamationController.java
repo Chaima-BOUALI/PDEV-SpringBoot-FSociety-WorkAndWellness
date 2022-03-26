@@ -1,5 +1,7 @@
 package tn.esprit.spring.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,28 +15,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.Reclamation;
+import tn.esprit.spring.repositories.ReclamationRepository;
 import tn.esprit.spring.services.IServiceReclamation;
 
-@EnableSwagger2
-@Api(tags = "Reclamations Management")
+
 @RestController
-@RequestMapping("/Reclamations")
+@RequestMapping("/api/Reclamations")
 public class ReclamationController {
 @Autowired
 IServiceReclamation serviceReclamation; 
+@Autowired
+ReclamationRepository reclamationRepository;
 @GetMapping("/ShowReclamations/{Reclamation-id}")
 @ResponseBody
 public Reclamation retrieveReclamation(@PathVariable("Reclamation-id") int idReclamation ) {
 return serviceReclamation.retrieveReclamation(idReclamation);
 }
 @PostMapping("/add-reclamations")
-@ResponseBody
+
 public Reclamation addReclamation(@RequestBody Reclamation r)
 {
-	Reclamation reclamations = serviceReclamation.addReclamation(r);
-return reclamations;
+	return serviceReclamation.addReclamation(r);
+
 }
 @DeleteMapping("/remove-reclamation/{reclamation-id}")
 @ResponseBody
@@ -45,6 +48,26 @@ serviceReclamation.deleteReclamation(idReclamation);
 @ResponseBody
 public Reclamation modifyReclamation(@RequestBody Reclamation reclamations) {
 return serviceReclamation.updateReclamation(reclamations);
+}
+@PostMapping("/add/{idR}")
+public	String AddComplaints(@PathVariable Integer idR, @RequestBody Reclamation rec){
+	List<String> dic = reclamationRepository.Dictionnaire();
+	for (int i = 1; i <= dic.size(); i++) {
+		if (rec.getObjectReclamation().contains(dic.get(i-1))) {
+			break;
+		}
+		else{
+			if (i == dic.size()) {
+				serviceReclamation.AddReclamation(idR, rec);
+				return "complaints added succesfully";
+			}
+		}
+		
+	}
+	return "can not add complaints which contains a forbidden word";
+	
+
+
 }
 
 }
