@@ -11,35 +11,33 @@ import tn.esprit.spring.repositories.UserRepository;
 @Service
 public class EventsServiceImpl implements IServiceEvents {
 @Autowired
-EventRepository eventRepository;
+EventRepository eventsRepository;
+@Autowired
 UserRepository userRepository; 
-	@Override
+
+@Override
 	public List<Events> retrieveAllEvents() {
-		return (List<Events>) eventRepository.findAll();
+		return (List<Events>) eventsRepository.findAll();
 	}
 	
 
-	@Override
-	public Events addEvents(Events e) {
-		
-		return eventRepository.save(e);
-	}
 
+	
 	@Override
 	public void deleteEvents(int id) {
-		eventRepository.deleteById(id);
+		eventsRepository.deleteById(id);
 
 	}
 
 	@Override
 	public Events updateEvents(Events e) {
 		
-		return  eventRepository.save(e);
+		return  eventsRepository.save(e);
 	}
 
 	@Override
 	public Events retrieveEvents(int id) {
-		Events E = eventRepository.findById(id).get();
+		Events E = eventsRepository.findById(id).get();
 		return E;
 	}
 
@@ -48,9 +46,29 @@ UserRepository userRepository;
 	public void AddAndAffect(List<Events> le, Integer idUser) {
 		User user = userRepository.findById(idUser).orElse(null);
 		for (Events events : le) {
-			events.setUsers(null);
-			eventRepository.save(events);
+			events.setUser(null);
+			eventsRepository.save(events);
 		}	
 	}
+	
+
+@Override
+public Events affecterUserAEvent(int idEvent, int idUser) {
+    Events ev=eventsRepository.findById(idEvent).get();
+    User us=userRepository.findById(idUser).get();
+    ev.setUser(us);
+
+    return eventsRepository.save(ev);
+}
+@Override
+public Events addEvents(Events e) {
+	// TODO Auto-generated method stub
+	return eventsRepository.save(e);
+}
+
+@Override
+public String maxAttendant() {
+    return eventsRepository.maxAttendant();
+}
 
 }

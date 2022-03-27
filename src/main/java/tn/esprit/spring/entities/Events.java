@@ -2,6 +2,7 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,58 +30,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "EVENTS")
+
+@Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EnableScheduling
-@Table(name = "EVENT_TABLE")
-public class Events implements Serializable {
+@Table(name = "events")
+public class Events {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+    private String eventTopic;
+    private String Description;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    private String VideoPub;
+    private String ImagePub;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idEvent;
-	@Column(length = 1000)
-	private String nameEvent;
-	@Column(length = 1000)
-	private String EventDescription;
-	@Column(length = 1000)
-	private int EventAttendent;
-	@Column(length = 1000)
-	private int MaxEventAttendent;
-	@Temporal(TemporalType.DATE)
-	private Date dateEvent;
-	
-	private int idImage;
-	@Column(length = 1000)
-	@JsonIgnore
-	private String imageName;
-	@Column(length = 1000)
-	@JsonIgnore
-	private String imageType;
-	@Column(length = 1000)
-	@JsonIgnore
-	private String imageURL;
-	@Lob
-	@JsonIgnore
-	private byte[] dataImage;
-	@ManyToMany
-	@JsonIgnore
-	Set<Reservation> reservations;
-	@ManyToMany
-	@JsonIgnore
-	Set<Subscription> subscriptions;
-	@ManyToMany
-	@JsonIgnore
-	Set<Subscription> partnerships;
-	@ManyToMany
-	@JsonIgnore
-	Set<User> users;
+    @ManyToOne
+    @JsonIgnore
+    private User user;
+
+
+    //@ManyToMany
+    //@JsonIgnore
+  //  private List<Participant> participant;
+
+
 
 }
+

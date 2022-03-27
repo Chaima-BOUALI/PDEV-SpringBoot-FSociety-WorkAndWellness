@@ -5,6 +5,7 @@ import java.util.List;
 import tn.esprit.spring.entities.Events;
 
 public interface IServiceEvents {
+
 	List<Events> retrieveAllEvents();
 
 	Events addEvents (Events e);
@@ -14,7 +15,12 @@ public interface IServiceEvents {
 	Events updateEvents(Events e);
 
 	Events retrieveEvents (int id);
-	
+	 Events affecterUserAEvent(int idEvent, int idUser);
 	void AddAndAffect(List<Events> le, Integer idUser);
+
+	String maxAttendant();
+	
+	
+	
 
 }

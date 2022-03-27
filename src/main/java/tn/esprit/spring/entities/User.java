@@ -103,6 +103,9 @@ public class User{
 	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
 	private List<Publication>publication = new ArrayList<>();
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private List<Events>events = new ArrayList<>();
+	
 	public int getUserId() {
 		return id;
 	}

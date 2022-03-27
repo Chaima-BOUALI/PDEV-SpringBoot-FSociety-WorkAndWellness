@@ -26,26 +26,13 @@ import tn.esprit.spring.services.IServiceUser;
 public class EventsController {
 	@Autowired
 	IServiceEvents serviceEvents;
-	IServiceUser iServiceUser;
-
-	@PostMapping("/add-events")
-	@ResponseBody
-	public Events addEvents(@RequestBody Events e) {
-		Events events = serviceEvents.addEvents(e);
-		return e;
-	}
-
-	@DeleteMapping("/remove-event/{event-id}")
-	@ResponseBody
-	public void removeArticle(@PathVariable("event-id") int idEvent) {
-		serviceEvents.deleteEvents(idEvent);
-	}
+	//@Autowired
+	//IServiceUser iServiceUser;
 
 	@ResponseBody
 	@GetMapping("/showEvents")
-	public List<Events> getEvents() {
-		List<Events> listEvent = serviceEvents.retrieveAllEvents();
-		return listEvent;
+	public 	List<Events> retrieveAllEvents(){
+		return serviceEvents.retrieveAllEvents();
 	}
 
 	@GetMapping("/showevent/{event-id}")
@@ -60,8 +47,28 @@ public class EventsController {
 		return serviceEvents.updateEvents(e);
 	}
 
-	@PostMapping("/add-events/{id-users}")
-	public void AddAndAffect(@RequestBody List<Events> le, @PathVariable("id-user") Integer idUser) {
-		iServiceUser.AddAndAffect(le, idUser);
+	
+	@DeleteMapping("/remove-event/{event-id}")
+	@ResponseBody
+	public void removeArticle(@PathVariable("event-id") int idEvent) {
+		serviceEvents.deleteEvents(idEvent);
 	}
+
+	
+	@PostMapping("/add")
+	public Events addEvents(@RequestBody Events e) {
+		return serviceEvents.addEvents(e);
+	}
+	
+	  @GetMapping("affectUser/{idEvent}/{idUser}")
+	    public Events affecterUserAEvent(@PathVariable int idEvent,@PathVariable int idUser){
+	        return serviceEvents.affecterUserAEvent(idEvent,idUser);
+	    }
+	  
+	  @GetMapping("/max")
+	  public int maxAttendant() {
+		  return serviceEvents.maxAttendant();
+	  }
+
+	
 }
