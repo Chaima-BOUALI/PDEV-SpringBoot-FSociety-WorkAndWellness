@@ -69,5 +69,9 @@ public	String AddComplaints(@PathVariable Integer idR, @RequestBody Reclamation 
 
 
 }
+@GetMapping("/nbre")
+public Long nbreReclamation() {
+	return serviceReclamation.nbreReclamation();
+}
 
 }

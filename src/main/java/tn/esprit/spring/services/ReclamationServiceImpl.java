@@ -50,6 +50,12 @@ UserRepository userRepository;
 		}).get();
 	}
 
+	@Override
+	public Long nbreReclamation() {
+		// TODO Auto-generated method stub
+		return reclamationRepository.count();
+	}
+
 	
 
 }

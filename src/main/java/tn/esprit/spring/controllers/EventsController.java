@@ -1,8 +1,12 @@
 package tn.esprit.spring.controllers;
 
+import java.util.Date;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,10 +69,21 @@ public class EventsController {
 	        return serviceEvents.affecterUserAEvent(idEvent,idUser);
 	    }
 	  
-	  @GetMapping("/max")
-	  public int maxAttendant() {
-		  return serviceEvents.maxAttendant();
-	  }
-
-	
+	//  @GetMapping("/max")
+	 // public String maxAttendant() {
+		//  return serviceEvents.maxAttendant();}
+		  
+	  
+	  @PutMapping("/{id}")
+	    public Events updateEventById(@PathVariable int id,@RequestBody Events events){
+	        return serviceEvents.modifierEvent(id,events);
+	    }
+	  @DeleteMapping("/byDate")
+	    public List<Events> deleteEventById(@PathParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date){
+	        return serviceEvents.supprimerAllEventsByDate(date);
+	    }
+	  @GetMapping("/byDate")
+	    public Events getEventByDate(@PathParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date){
+	        return serviceEvents.afficherEventByDate(date);
+	    }
 }

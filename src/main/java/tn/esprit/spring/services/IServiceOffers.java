@@ -15,5 +15,7 @@ public interface IServiceOffers {
 
 	Offers retrieveOffers (int id);
 	//void OfferNumberPerPartner();
+	
+	public Offers affecterOffersPartnership(int idOffer, int idPartnership);
 
 }

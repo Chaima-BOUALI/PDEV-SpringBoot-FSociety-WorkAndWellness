@@ -20,5 +20,7 @@ public interface IServiceReclamation {
 	
 	
 	Reclamation AddReclamation(Integer id, Reclamation rec);
+	
+	 public Long nbreReclamation();
 
 }

@@ -7,8 +7,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
+import tn.esprit.spring.entities.Events;
 import tn.esprit.spring.entities.OfferType;
 import tn.esprit.spring.entities.Offers;
+import tn.esprit.spring.entities.Partnership;
+import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.OfferRepository;
 import tn.esprit.spring.repositories.PartnershipRepository;
 @Service
@@ -16,6 +19,7 @@ import tn.esprit.spring.repositories.PartnershipRepository;
 public class OffersServiceImpl implements IServiceOffers {
 @Autowired
 OfferRepository offerRepository;
+@Autowired
 PartnershipRepository partnershipRepository; 
 	@Override
 	public List<Offers> retrieveAllOffers() {
@@ -47,6 +51,18 @@ PartnershipRepository partnershipRepository;
 		return O;
 	}
 
+	@Override
+	public Offers affecterOffersPartnership(int idOffer, int idPartnership) {
+		
+		   Offers ev=offerRepository.findById(idOffer).get();
+		    Partnership us=partnershipRepository.findById(idPartnership).get();
+		    ev.setPartnerships(us);;
+
+		    return offerRepository.save(ev);
+	}
+
+	
+
 	
 // @Override
 	
@@ -59,6 +75,7 @@ PartnershipRepository partnershipRepository;
 			log.info("--- Weekend_OFFERS Offers : " + offerRepository.numberByOffer(OfferType.Weekend_OFFERS));
 
 		}	*/
+	
 	
 	}
 

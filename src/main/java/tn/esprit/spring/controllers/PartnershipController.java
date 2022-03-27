@@ -19,7 +19,7 @@ import tn.esprit.spring.services.IServicePartnership;
 @EnableSwagger2
 @Api(tags = "Partnerships Management")
 @RestController
-@RequestMapping("/Partnership_Management")
+@RequestMapping("/api/Partnership_Management")
 public class PartnershipController {
 	@Autowired
 	IServicePartnership servicePartnership; 

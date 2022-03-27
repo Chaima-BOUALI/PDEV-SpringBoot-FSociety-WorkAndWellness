@@ -22,7 +22,7 @@ import tn.esprit.spring.services.IServiceOffers;
 @EnableSwagger2
 @Api(tags = "Offers Management")
 @RestController
-@RequestMapping("/offers")
+@RequestMapping("/api/offers")
 public class OffersController {
 @Autowired
 IServiceOffers serviceOffers;
@@ -55,6 +55,10 @@ return serviceOffers.retrieveOffers(idOffer);
 @ResponseBody
 public Offers modifyOffers(@RequestBody Offers o) {
 return serviceOffers.updateOffers(o);
-}
 
+}
+@GetMapping("/affectOffers/{idOffer}/{idPartnership}")
+public Offers affecterOffersPartnership( @PathVariable int idOffer,@PathVariable int idPartnership) {
+	return serviceOffers.affecterOffersPartnership(idOffer, idPartnership);
+}
 }
