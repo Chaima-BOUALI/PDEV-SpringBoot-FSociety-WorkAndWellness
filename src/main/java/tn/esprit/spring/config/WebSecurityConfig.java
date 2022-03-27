@@ -37,10 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	
 	
-	 @Bean
-	    public JavaMailSender javaMailSender() {
-	        return new JavaMailSenderImpl();
-	    }
+	
 	@Bean
 	public AuthTokenFilter authenticationJwtTokenFilter() {
 		return new AuthTokenFilter();

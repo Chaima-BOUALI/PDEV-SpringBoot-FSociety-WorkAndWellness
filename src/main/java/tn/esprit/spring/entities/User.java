@@ -94,7 +94,15 @@ public class User{
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Forum>forums = new ArrayList<>();
-
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+	private List<LikeComments>likeComments = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	private List<Comments>comments = new ArrayList<>();
+	
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+	private List<Publication>publication = new ArrayList<>();
+	
 	public int getUserId() {
 		return id;
 	}

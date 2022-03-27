@@ -49,7 +49,7 @@ public class Reaction implements Serializable{
 	@ManyToMany
 	@JsonIgnore
     Set<User> users;
-	@ManyToOne
-	@JsonIgnore
-	private Publication pub;
+	//@ManyToOne
+	//@JsonIgnore
+	//private Publication pub;
 }

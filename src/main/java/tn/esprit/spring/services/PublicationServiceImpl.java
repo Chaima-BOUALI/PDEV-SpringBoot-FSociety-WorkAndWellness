@@ -36,7 +36,7 @@ public class PublicationServiceImpl implements IServicePublication{
 	@Override
 	public Publication addPublication(Publication p) {
 		// TODO Auto-generated method stub
-		return null;
+		return postRepository.save(p) ;
 	}
 
 	@Override
