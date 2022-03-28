@@ -105,6 +105,9 @@ public class User{
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Events>events = new ArrayList<>();
+	 @ManyToMany (mappedBy = "users")
+	 List<Quiz> quizList;
+
 	
 	public int getUserId() {
 		return id;

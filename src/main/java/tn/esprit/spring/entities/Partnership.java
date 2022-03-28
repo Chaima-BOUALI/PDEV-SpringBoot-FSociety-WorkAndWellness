@@ -83,6 +83,9 @@ public class Partnership implements Serializable{
 		
 		@OneToMany(mappedBy = "partnership")
 		private List<Subjects>  subject;
+
+		@ManyToMany(mappedBy = "partners")
+	    private List<Events> events;
 		
 
 }

@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.UserRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired
@@ -19,9 +22,31 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Transactional
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     User user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+            .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
     return UserDetailsImpl.build(user);
+  }
+
+  public User updateUser(User user){
+    return userRepository.save(user);
+  }
+
+  public void deleteUser(Integer id){
+    userRepository.deleteById(id);
+  }
+
+
+  public String loyalUser(){
+    List<User> users = (List<User>) userRepository.findAll();
+    User userMax = null;
+    int max = -1;
+    for (User u : users){
+      if(u.getEvents().size() > max){
+        max = u.getEvents().size();
+        userMax = u;
+      }
+    }
+    return userMax.getUsername();
   }
 
 }

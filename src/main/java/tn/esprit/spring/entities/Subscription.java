@@ -16,7 +16,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -57,5 +59,9 @@ public class Subscription {
     @JsonIgnore
     @JoinColumn(name = "id")
     private User user;
+
+
+    @ManyToMany(mappedBy = "subscriptions")
+    private List<Events> events = new ArrayList<>();
    
 }

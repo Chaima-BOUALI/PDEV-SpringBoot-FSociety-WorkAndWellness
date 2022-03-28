@@ -1,11 +1,14 @@
 package tn.esprit.spring.services;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Events;
+import tn.esprit.spring.entities.Partnership;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.EventRepository;
 import tn.esprit.spring.repositories.UserRepository;
@@ -103,5 +106,34 @@ public List<Events> supprimerAllEventsByDate(Date date) {
 	// TODO Auto-generated method stub
 	return eventsRepository.deleteAllByDate(date);
 }
+
+
+public String eventIn(Integer id){
+	int nbDays = (int) ChronoUnit.DAYS.between(LocalDate.now(),eventsRepository.findById(id).get().getDate());
+	return ( nbDays + " days");
+}
+
+
+public String bestEvent(){
+	List<Events> events = (List<Events>) eventsRepository.findAll();
+	Events eventMax = null;
+	int max = -1;
+	for (Events e : events){
+		if(e.getSubscriptions().size() > max){
+			max = e.getSubscriptions().size();
+			eventMax = e;
+		}
+	}
+	return eventMax.getName();
+}
+
+public int nbPartner(Events e){
+	List<Partnership> partners = e.getPartners();
+	return partners.size();
+}
+
+
+
+
 
 }

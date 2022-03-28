@@ -1,6 +1,9 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -42,10 +45,12 @@ public class Events {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Integer id;
+    @Column(nullable = false, unique = true)
+    private String name;
     private String eventTopic;
     private String Description;
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
     private String VideoPub;
     private String ImagePub;
 
@@ -54,9 +59,15 @@ public class Events {
     private User user;
 
 
-    //@ManyToMany
+    @ManyToMany(mappedBy = "events")
     //@JsonIgnore
-  //  private List<Participant> participant;
+    List<Subscription> subscriptions;
+
+    @ManyToMany
+    private List<Partnership> partners = new ArrayList<>();
+
+
+
 
 
 
