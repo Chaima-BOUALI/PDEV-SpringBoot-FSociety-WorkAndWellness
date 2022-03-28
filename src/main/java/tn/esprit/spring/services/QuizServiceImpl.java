@@ -1,18 +1,13 @@
 package tn.esprit.spring.services;
 import java.util.List;
 
-import javax.naming.spi.DirStateFactory.Result;
-import javax.xml.ws.Response;
-
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tn.esprit.spring.entities.QuestionsQuiz;
 import tn.esprit.spring.entities.Quiz;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.QuizRepository;
@@ -58,5 +53,18 @@ public class QuizServiceImpl implements IServiceQuiz {
 	public Quiz retrieveQuiz(int id) {
 		Quiz q = quizRepository.findById(id).get();
 		return q;
+	}
+
+	public String scoreQuiz(User user, Quiz quiz){
+		if (user.getQuizList().contains(quiz) == false){
+			return ("L'utilisateur n'a pas passé ce quiz");
+		}
+		int score = 0;
+		for (QuestionsQuiz q : quiz.getQuestionsQuizs()){
+			if (q.getIsValid() == true){
+				score += 1;
+			}
+		}
+		return ("Le score de cet utilisateur dans ce quiz est : " + score);
 	}
 }

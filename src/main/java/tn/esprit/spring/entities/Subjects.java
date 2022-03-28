@@ -72,5 +72,7 @@ public class Subjects implements Serializable{
 	
 	@ManyToOne
 	private Partnership partnership;
+
+
 }
 

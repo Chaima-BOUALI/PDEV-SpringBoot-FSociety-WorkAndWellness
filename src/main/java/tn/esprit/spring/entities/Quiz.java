@@ -1,10 +1,7 @@
 package tn.esprit.spring.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -67,9 +64,7 @@ public class Quiz implements Serializable{
 	private Boolean isPublished = false;
 	@ManyToMany
 	@JsonIgnore
-    Set<User> users;
-	 @OneToMany(targetEntity=QuestionsQuiz.class, mappedBy="quiz")
-	    @JsonIgnore
-		private List<QuestionsQuiz> questions = new ArrayList<>();
+    Set<User> users = new HashSet<>();
+
 	
 }

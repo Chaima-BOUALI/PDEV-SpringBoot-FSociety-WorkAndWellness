@@ -21,13 +21,13 @@ public class JwtUtils {
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
   @Value("${bezkoder.app.jwtSecret}")
-  private String jwtSecret;
+  private static String jwtSecret;
 
   @Value("${bezkoder.app.jwtExpirationMs}")
-  private int jwtExpirationMs;
+  private static int jwtExpirationMs;
   
 
-  public String generateJwtToken(Authentication authentication) {
+  public static String generateJwtToken(Authentication authentication) {
 
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
