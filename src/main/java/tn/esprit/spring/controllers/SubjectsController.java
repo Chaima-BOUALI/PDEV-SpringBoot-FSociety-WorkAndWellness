@@ -1,18 +1,15 @@
 package tn.esprit.spring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import tn.esprit.spring.entities.Forum;
 import tn.esprit.spring.entities.Subjects;
 import tn.esprit.spring.services.IServiceSubjects;
+
+import java.util.List;
 
 @EnableSwagger2
 @Api(tags = "Subjects Management")
@@ -26,11 +23,31 @@ IServiceSubjects subjectsservice;
 public Subjects retrieveSubjects (@PathVariable("subjects-id") int idSubjects ) {
 return subjectsservice.retrieveSubjects(idSubjects);
 }
-@PostMapping("/add-subjects")
+@PostMapping("/add")
 @ResponseBody
 public Subjects addSubjects(@RequestBody Subjects s)
 {
 	Subjects sub= subjectsservice.addSubjects(s);
 return sub;
 }
+
+	@GetMapping("/showAll")
+	@ResponseBody
+	public List<Subjects> retrieveSubjects() {
+		return subjectsservice.retrieveAllSubjects();
+	}
+
+	@PutMapping("/modify-subjects")
+	@ResponseBody
+	public Subjects modifySubjects(@RequestBody Subjects subjects) {
+		return subjectsservice.updateSubjects(subjects);
+	}
+
+
+	@DeleteMapping("/remove-Subjects/{Subjects-id}")
+	@ResponseBody
+	public void removeSubject(@PathVariable("Subjects-id") Subjects subjects) {
+		subjectsservice.deleteSubjects(subjects);
+	}
+
 }

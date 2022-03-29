@@ -11,7 +11,7 @@ public interface IServiceSubjects {
 
 	Subjects addSubjects (Subjects s);
 
-	void deleteSubjects (int id);
+	void deleteSubjects (Subjects id);
 
 	Subjects updateSubjects (Subjects s);
 

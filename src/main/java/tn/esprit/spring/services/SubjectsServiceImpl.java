@@ -23,8 +23,8 @@ SubjectsRepository subjectRepository;
 	}
 
 	@Override
-	public void deleteSubjects(int id) {
-		subjectRepository.deleteById(id);
+	public void deleteSubjects(Subjects subjects) {
+		subjectRepository.delete(subjects);
 	}
 
 	@Override
