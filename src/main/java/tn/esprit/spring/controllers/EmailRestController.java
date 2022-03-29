@@ -10,10 +10,7 @@ import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.spring.config.MyConstants;
 
@@ -78,7 +75,7 @@ public class EmailRestController {
 	
 	
 	@ResponseBody
-    @RequestMapping("api/sendHtmlEmail")
+    @GetMapping("api/sendHtmlEmail")
     public String sendHtmlEmail() throws MessagingException {
 
         MimeMessage message = emailSender.createMimeMessage();

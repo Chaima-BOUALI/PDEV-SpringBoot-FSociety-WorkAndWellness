@@ -2,6 +2,7 @@ package tn.esprit.spring.services;
 
 import java.util.List;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import tn.esprit.spring.entities.Events;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.entities.User;
@@ -9,18 +10,14 @@ import tn.esprit.spring.entities.User;
 public interface IServiceUser {
 	List<User> retrieveAllUsers();
 
-	User addUser (User u);
+	void deleteUser (Integer id);
 
-	void deleteUser (int id);
+	User updateUser (int id);
+	UserDetails loadUserByUsername(String username);
 
-	User updateUser (User u);
+	List<String> loyalUser();
 
-	User retrieveUser (int id);
-	void AddAndAffect(List<Events> le, Integer idUser);
-	Role SaveRole (Role role);
-	//void AddRoleToUser (String RoleName, String username); 
-	User getUser (String username); 
-	List<User> getAllUsers (); 
+
 
 
 }

@@ -50,7 +50,7 @@ public class Events {
     private String eventTopic;
     private String Description;
     @Temporal(TemporalType.DATE)
-    private LocalDate date;
+    private Date date;
     private String VideoPub;
     private String ImagePub;
 
@@ -58,11 +58,11 @@ public class Events {
     @JsonIgnore
     private User user;
 
-
+    @JsonIgnore
     @ManyToMany(mappedBy = "events")
     //@JsonIgnore
     List<Subscription> subscriptions;
-
+    @JsonIgnore
     @ManyToMany
     private List<Partnership> partners = new ArrayList<>();
 

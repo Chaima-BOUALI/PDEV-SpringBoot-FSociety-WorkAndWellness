@@ -46,6 +46,10 @@ public class PartnershipController {
 	public Partnership modifyPartnership(@RequestBody Partnership partners) {
 	return servicePartnership.updatePartnership(partners);
 	}
-	
+
+	@GetMapping("/bestAtt")
+	public String bestAtt(){
+		return servicePartnership.bestAtt();
+	}
 
 }

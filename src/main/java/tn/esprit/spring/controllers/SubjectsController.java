@@ -17,7 +17,7 @@ import tn.esprit.spring.services.IServiceSubjects;
 @EnableSwagger2
 @Api(tags = "Subjects Management")
 @RestController
-@RequestMapping("/Subjects")
+@RequestMapping("/api/Subjects")
 public class SubjectsController {
 @Autowired
 IServiceSubjects subjectsservice; 

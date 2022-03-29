@@ -11,10 +11,9 @@ import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.UserRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService,IServiceUser {
   @Autowired
   UserRepository userRepository;
 
@@ -27,16 +26,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     return UserDetailsImpl.build(user);
   }
 
-  public User updateUser(User user){
+  public List<User> retrieveAllUsers(){
+    return (List<User>) userRepository.findAll();
+  }
+
+  public User updateUser(int id){
+    User user = userRepository.findById(id).get();
     return userRepository.save(user);
   }
 
   public void deleteUser(Integer id){
+
     userRepository.deleteById(id);
   }
 
 
-  public String loyalUser(){
+  public List<String> loyalUser(){
     List<User> users = (List<User>) userRepository.findAll();
     User userMax = null;
     int max = -1;
@@ -46,7 +51,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         userMax = u;
       }
     }
-    return userMax.getUsername();
+    List<String> result = List.of(userMax.getUsername(),userMax.getEmail());
+    return result;
   }
 
 }

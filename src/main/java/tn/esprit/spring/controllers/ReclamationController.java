@@ -49,7 +49,7 @@ serviceReclamation.deleteReclamation(idReclamation);
 public Reclamation modifyReclamation(@RequestBody Reclamation reclamations) {
 return serviceReclamation.updateReclamation(reclamations);
 }
-@PostMapping("/add/{idR}")
+@PostMapping("/add/{idUser}")
 public	String AddComplaints(@PathVariable Integer idR, @RequestBody Reclamation rec){
 	List<String> dic = reclamationRepository.Dictionnaire();
 	for (int i = 1; i <= dic.size(); i++) {
@@ -74,4 +74,6 @@ public Long nbreReclamation() {
 	return serviceReclamation.nbreReclamation();
 }
 
+@GetMapping("/showAll")
+public List<Reclamation> showAll(){ return serviceReclamation.retrieveAllReclamation();}
 }

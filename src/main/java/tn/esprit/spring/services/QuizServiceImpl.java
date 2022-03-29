@@ -11,6 +11,7 @@ import tn.esprit.spring.entities.QuestionsQuiz;
 import tn.esprit.spring.entities.Quiz;
 import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.QuizRepository;
+import tn.esprit.spring.repositories.UserRepository;
 
 
 @Service("QuizService")
@@ -19,6 +20,7 @@ public class QuizServiceImpl implements IServiceQuiz {
 
 	private static final Logger logger = LoggerFactory.getLogger(QuizServiceImpl.class);
 	private QuizRepository quizRepository;
+	private UserRepository userRepository;
 
 	private IServiceQuestionsQuiz questionService;
 
@@ -55,7 +57,9 @@ public class QuizServiceImpl implements IServiceQuiz {
 		return q;
 	}
 
-	public String scoreQuiz(User user, Quiz quiz){
+	public String scoreQuiz(Integer iduser, Integer idquiz){
+		User user = userRepository.findById(iduser).get();
+		Quiz quiz = quizRepository.findById(idquiz).get();
 		if (user.getQuizList().contains(quiz) == false){
 			return ("L'utilisateur n'a pas passé ce quiz");
 		}

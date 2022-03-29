@@ -1,7 +1,13 @@
 package tn.esprit.spring.services;
 
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAmount;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -109,10 +115,12 @@ public List<Events> supprimerAllEventsByDate(Date date) {
 
 
 public String eventIn(Integer id){
-	int nbDays = (int) ChronoUnit.DAYS.between(LocalDate.now(),eventsRepository.findById(id).get().getDate());
-	return ( nbDays + " days");
-}
+	//int Days = Period.between(LocalDate.now(),)
 
+	int nbDays = eventsRepository.findById(id).get().getDate().getDate() - LocalDate.now().getDayOfMonth();
+	System.out.println(Math.abs(nbDays));
+	return ( Math.abs(nbDays) + " days");
+}
 
 public String bestEvent(){
 	List<Events> events = (List<Events>) eventsRepository.findAll();
@@ -127,8 +135,9 @@ public String bestEvent(){
 	return eventMax.getName();
 }
 
-public int nbPartner(Events e){
-	List<Partnership> partners = e.getPartners();
+public int nbPartner(int id){
+	Events event = eventsRepository.findById(id).get();
+	List<Partnership> partners = event.getPartners();
 	return partners.size();
 }
 

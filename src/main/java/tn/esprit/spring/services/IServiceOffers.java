@@ -18,4 +18,7 @@ public interface IServiceOffers {
 	
 	public Offers affecterOffersPartnership(int idOffer, int idPartnership);
 
+	String bestOffType();
+
+	String mostUsedOff();
 }

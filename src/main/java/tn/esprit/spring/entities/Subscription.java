@@ -61,7 +61,7 @@ public class Subscription {
     private User user;
 
 
-    @ManyToMany(mappedBy = "subscriptions")
+    @ManyToMany
     private List<Events> events = new ArrayList<>();
    
 }

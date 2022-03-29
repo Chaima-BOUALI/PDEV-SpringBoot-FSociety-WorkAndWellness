@@ -61,4 +61,12 @@ return serviceOffers.updateOffers(o);
 public Offers affecterOffersPartnership( @PathVariable int idOffer,@PathVariable int idPartnership) {
 	return serviceOffers.affecterOffersPartnership(idOffer, idPartnership);
 }
+@GetMapping("/bestOfferType")
+public String bestOffType(){
+	return serviceOffers.bestOffType();
+}
+@GetMapping("/modtUsedType")
+public String mostUsedOff(){
+	return serviceOffers.mostUsedOff();
+}
 }

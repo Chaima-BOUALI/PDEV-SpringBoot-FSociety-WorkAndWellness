@@ -14,4 +14,5 @@ public interface IServicePartnership {
 	Partnership updatePartnership (Partnership p);
 
 	Partnership retrievePartnership (int id);
+	String bestAtt();
 }

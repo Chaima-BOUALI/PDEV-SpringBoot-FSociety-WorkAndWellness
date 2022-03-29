@@ -86,4 +86,20 @@ public class EventsController {
 	    public Events getEventByDate(@PathParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date){
 	        return serviceEvents.afficherEventByDate(date);
 	    }
+		@GetMapping("/bestEvent")
+	public String bestEvent(){
+		return serviceEvents.bestEvent();
+		}
+
+		@GetMapping("/{id}/remainingDays")
+	public String remainingDays(@PathVariable Integer id){
+
+		return serviceEvents.eventIn(id);
+		}
+
+	@GetMapping("/{id}/nbPartners")
+	public int nbPart(@PathVariable int id){
+
+		return serviceEvents.nbPartner(id);
+	}
 }

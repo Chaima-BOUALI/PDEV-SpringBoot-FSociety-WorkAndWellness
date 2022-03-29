@@ -18,7 +18,7 @@ import tn.esprit.spring.services.IServiceNotifications;
 @EnableSwagger2
 @Api(tags = "Notifications Management")
 @RestController
-@RequestMapping("/Notifications")
+@RequestMapping("/api/Notifications")
 public class NotificationsController {
 	@Autowired
 	IServiceNotifications serviceNotifications; 
