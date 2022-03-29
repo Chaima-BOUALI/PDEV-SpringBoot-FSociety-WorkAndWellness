@@ -43,7 +43,7 @@ public class EventSubscription implements Serializable {
 	@Column(length = 3000)
 	private int EventSubscriptions;
 	@OneToMany
-	@JoinColumn(name ="id" )
+	@JoinColumn(name ="id")
 	@JsonIgnore
 	List<User> users;
 }

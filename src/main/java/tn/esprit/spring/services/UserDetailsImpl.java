@@ -4,8 +4,6 @@ package tn.esprit.spring.services;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,16 +36,16 @@ public class UserDetailsImpl implements UserDetails {
   }
 
   public static UserDetailsImpl build(User user) {
-    List<GrantedAuthority> authorities = user.getRoles().stream()
-        .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-        .collect(Collectors.toList());
+  //  List<GrantedAuthority> authorities = user.getRoles().stream()
+    //    .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+      //  .collect(Collectors.toList());
 
     return new UserDetailsImpl(
         (long) user.getId(), 
         user.getUsername(), 
         user.getEmail(),
-        user.getPassword(), 
-        authorities);
+        user.getPassword(),
+            List.of(new SimpleGrantedAuthority("user")));
   }
 
   @Override
