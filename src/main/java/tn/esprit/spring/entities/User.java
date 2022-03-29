@@ -108,6 +108,10 @@ public class User{
 	 @ManyToMany (mappedBy = "users")
 	 List<Quiz> quizList;
 
+	 @OneToMany
+	 @JoinColumn(name ="idEventSubscription" )
+	 List<EventSubscription> subscriptions;
+
 	
 	public int getUserId() {
 		return id;

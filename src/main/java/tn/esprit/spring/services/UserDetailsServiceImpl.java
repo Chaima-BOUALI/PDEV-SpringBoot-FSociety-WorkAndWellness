@@ -11,6 +11,7 @@ import tn.esprit.spring.entities.User;
 import tn.esprit.spring.repositories.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService,IServiceUser {
@@ -38,6 +39,11 @@ public class UserDetailsServiceImpl implements UserDetailsService,IServiceUser {
   public void deleteUser(Integer id){
 
     userRepository.deleteById(id);
+  }
+
+  @Override
+  public Optional<User> getUserByID(Integer id) {
+    return userRepository.findById(id);
   }
 
 

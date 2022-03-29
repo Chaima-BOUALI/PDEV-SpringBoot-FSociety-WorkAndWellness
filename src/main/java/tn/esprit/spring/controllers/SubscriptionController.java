@@ -22,7 +22,7 @@ import tn.esprit.spring.services.IServiceSubscription;
 @EnableSwagger2
 @Api(tags = "Subscriptions Management")
 @RestController
-@RequestMapping("/Subscription")
+@RequestMapping("/api/Subscription")
 public class SubscriptionController {
 	@Autowired
 	IServiceSubscription subservice; 

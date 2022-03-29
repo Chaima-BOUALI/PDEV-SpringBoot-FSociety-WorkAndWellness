@@ -20,7 +20,7 @@ import tn.esprit.spring.services.IServicePublicity;
 @EnableSwagger2
 @Api(tags = "Publicity Management")
 @RestController
-@RequestMapping("/Publicity")
+@RequestMapping("/api/Publicity")
 public class PublicityController {
 @Autowired
 IServicePublicity servicePublicity; 

@@ -10,7 +10,8 @@ import tn.esprit.spring.repositories.ReactionRepository;
 @Service
 public class ReactionServiceImpl implements IServiceReaction {
 @Autowired
-ReactionRepository reactRepository; 
+ReactionRepository reactRepository;
+
 	@Override
 	public List<Reaction> retrieveAllReactions() {
 		return (List<Reaction>) reactRepository.findAll();

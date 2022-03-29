@@ -51,6 +51,7 @@ PartnershipRepository partnershipRepository;
 			}
 		}
 		return partMax.getNamePartnership();
+		//WHO GOT MAX EVENTS
 	}
 
 

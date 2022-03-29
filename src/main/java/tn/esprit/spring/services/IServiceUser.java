@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import tn.esprit.spring.entities.Events;
@@ -11,7 +12,7 @@ public interface IServiceUser {
 	List<User> retrieveAllUsers();
 
 	void deleteUser (Integer id);
-
+	Optional<User> getUserByID (Integer id);
 	User updateUser (int id);
 	UserDetails loadUserByUsername(String username);
 

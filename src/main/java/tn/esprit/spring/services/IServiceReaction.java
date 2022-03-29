@@ -14,4 +14,5 @@ public interface IServiceReaction {
 	Reaction updateReaction (Reaction react);
 
 	Reaction retrieveReaction (int id);
+
 }

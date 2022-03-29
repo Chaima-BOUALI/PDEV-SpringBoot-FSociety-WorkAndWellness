@@ -21,7 +21,7 @@ import tn.esprit.spring.services.IServiceQuestionsQuiz;
 @EnableSwagger2
 @Api(tags = "Questions Management")
 @RestController
-@RequestMapping("/QuestionsQuiz")
+@RequestMapping("/api/QuestionsQuiz")
 public class QuestionQuizController {
 	@Autowired
 	IServiceQuestionsQuiz iServiceQuestionsQuiz;

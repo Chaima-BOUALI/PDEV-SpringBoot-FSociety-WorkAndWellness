@@ -1,18 +1,17 @@
 package tn.esprit.spring.services;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import tn.esprit.spring.entities.Publication;
 
 public interface IServicePublication {
-	//List<Publication> retrieveAllPosts();
-	//void deletePublication(int id);
-	
-	//Publication getPublicationById(int id);
-	public Publication addPublication(Publication p);
-	
-	
+	List<Publication> retrieveAllPubs();
+	void deletePublication(int id);
+	Optional<Publication> getPublicationById(int id);
+	Publication addPublication(Publication p);
+	int countReactions (int id);
+
 	//public List<Publication>searchPublications (String pattern);
 	
 	

@@ -67,6 +67,7 @@ public String bestOffType(){
 }
 @GetMapping("/modtUsedType")
 public String mostUsedOff(){
+
 	return serviceOffers.mostUsedOff();
 }
 }

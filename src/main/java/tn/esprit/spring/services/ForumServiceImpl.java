@@ -22,7 +22,6 @@ FroumRepository froumRepository;
 
 	@Override
 	public Forum addForum(Forum f) {
-		
 		 return froumRepository.save(f);
 	}
 

@@ -19,7 +19,7 @@ import tn.esprit.spring.services.IServiceAnswerQuiz;
 @EnableSwagger2
 @Api(tags = "Answers Management")
 @RestController
-@RequestMapping("/AnswerQuiz")
+@RequestMapping("/api/AnswerQuiz")
 public class AnswerQuizController {
 @Autowired
 IServiceAnswerQuiz ServiceAnswerQuiz;

@@ -1,5 +1,6 @@
 package tn.esprit.spring.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import io.swagger.annotations.Api;
@@ -13,8 +14,9 @@ import java.util.List;
 @EnableSwagger2
 @Api(tags = "Forum Management")
 @RestController
-@RequestMapping("/ForumManagement")
+@RequestMapping("/api/ForumManagement")
 public class ForumController {
+    @Autowired
 IServiceForum serviceForum;
     @PostMapping("/add")
     public Forum addForum(@RequestBody Forum forum) {

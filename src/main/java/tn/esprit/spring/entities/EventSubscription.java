@@ -2,19 +2,10 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 
@@ -51,8 +42,8 @@ public class EventSubscription implements Serializable {
 	private int MaxEventSubscriptions;
 	@Column(length = 3000)
 	private int EventSubscriptions;
-	@ManyToMany
+	@OneToMany
+	@JoinColumn(name ="id" )
 	@JsonIgnore
-	Set<User> users;
-
+	List<User> users;
 }

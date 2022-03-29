@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.Forum;
 import tn.esprit.spring.entities.Subjects;
+import tn.esprit.spring.services.IServiceForum;
 import tn.esprit.spring.services.IServiceSubjects;
 
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
 @RequestMapping("/api/Subjects")
 public class SubjectsController {
 @Autowired
-IServiceSubjects subjectsservice; 
+IServiceSubjects subjectsservice;
+@Autowired
+	IServiceForum serviceForum;
 @GetMapping("/Showsubjects/{subjects-id}")
 @ResponseBody
 public Subjects retrieveSubjects (@PathVariable("subjects-id") int idSubjects ) {
@@ -50,4 +53,12 @@ return sub;
 		subjectsservice.deleteSubjects(subjects);
 	}
 
+	@RequestMapping("/affect/{subid}/{forumid}")
+	@ResponseBody
+	public void affect(@PathVariable("forumid") Integer id, @PathVariable("subid") Integer idSubj ){
+	Subjects temp = subjectsservice.retrieveSubjects(idSubj);
+	Forum forum = serviceForum.retrieveForum(id);
+	temp.setForum(forum);
+	subjectsservice.updateSubjects(temp);
+	}
 }

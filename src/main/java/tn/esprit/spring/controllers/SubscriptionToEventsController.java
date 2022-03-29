@@ -14,22 +14,30 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.EventSubscription;
 import tn.esprit.spring.services.IServiceEventSubscription;
+import tn.esprit.spring.services.IServiceUser;
+
+import java.util.List;
+import java.util.Set;
+
 @EnableSwagger2
 @Api(tags = "Events Subscription Management")
 @RestController
-@RequestMapping("/EventSubscription")
+@RequestMapping("/api/EventSubscription")
 public class SubscriptionToEventsController {
 	@Autowired
-	IServiceEventSubscription eventsubService; 
-	@GetMapping("/ShowEventSubscriptions/{EventSubscriptions-id}")
+	IServiceEventSubscription eventsubService;
+	@Autowired
+	IServiceUser serviceUser;
+	@GetMapping("/ShowEventSubscriptions/{id}")
 	@ResponseBody
-	public EventSubscription retrieveEventSubscription(@PathVariable("EventSubscription-id") int idEventSubscription ) {
-	return eventsubService.retrieveEventSubscription(idEventSubscription);
+	public EventSubscription retrieveEventSubscription(@PathVariable("id") int id ) {
+	return eventsubService.retrieveEventSubscription(id);
 	}
-	@PostMapping("/add-eventSub")
+	@PostMapping("/add-eventSub/{userid}")
 	@ResponseBody
-	public EventSubscription addEventSubscription(@RequestBody EventSubscription e)
+	public EventSubscription addEventSubscription(@PathVariable Integer userid, @RequestBody EventSubscription e)
 	{
+		e.setUsers(List.of(serviceUser.getUserByID(userid).get()));
 		EventSubscription subToEvents= eventsubService.addEventSubscription(e);
 	return subToEvents;
 	}

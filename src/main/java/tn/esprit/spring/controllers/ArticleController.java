@@ -22,7 +22,7 @@ import tn.esprit.spring.services.IServiceArticle;
 @EnableSwagger2
 @Api(tags = "Articles Management")
 @RestController
-@RequestMapping("/article")
+@RequestMapping("/api/article")
 public class ArticleController {
 @Autowired
 IServiceArticle serviceArticle;

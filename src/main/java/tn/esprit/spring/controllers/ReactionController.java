@@ -14,20 +14,17 @@ import io.swagger.annotations.Api;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import tn.esprit.spring.entities.AnswerQuiz;
 import tn.esprit.spring.entities.Reaction;
+import tn.esprit.spring.services.IServicePublication;
 import tn.esprit.spring.services.IServiceReaction;
 
 @EnableSwagger2
 @Api(tags = "Reaction Management")
 @RestController
-@RequestMapping("/Reactions_Management")
+@RequestMapping("/api/Reactions_Management")
 public class ReactionController {
 @Autowired
 IServiceReaction serviceReaction;
-@GetMapping("/showReactions/{Reaction-id}")
-@ResponseBody
-public Reaction retrieveReaction(@PathVariable("Reaction-id") int idReaction ) {
-return serviceReaction.retrieveReaction(idReaction);
-}
+
 @PostMapping("/add-reaction")
 @ResponseBody
 public Reaction addReaction(@RequestBody Reaction r)
