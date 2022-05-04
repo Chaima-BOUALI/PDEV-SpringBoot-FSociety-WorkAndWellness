@@ -1,0 +1,26 @@
+<p class="product-title">Modify</p>
+
+
+
+
+<form  (submit)="{sendPost}">
+
+  Reclamation Title <input #title (keyup)="processKeyupTitle(title.value)" style="border: #0a001f;border-radius: 4px" class="text-black"  formControlName="title" >
+
+  <br>
+  <br>
+  <br>
+  <mat-divider></mat-divider>
+
+  <textarea #omg (keyup)="processKeyupDesc(omg.value)" style="border: #0a001f;border-radius: 4px" class="os-textarea-cover" formControlName="desc"
+    matInput
+
+    cdkAutosizeMaxRows="5">
+    </textarea>
+
+
+
+  <br>
+  <br>
+  <button mat-button type="submit" class="btn-success" style="height: 40px;width: 120px">Submit</button>
+</form>
